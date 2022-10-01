@@ -10,26 +10,35 @@ import FormLabel from "@mui/material/FormLabel";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import Stack from "@mui/material/Stack";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Close, NavigateNext } from "@mui/icons-material";
 import { Typography } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
 
 export const PersonalInfo = ({
   formData,
-  nextStep,
-  handleChange,
   onChange,
-  setStep,
-  setOpen,
+  handleChange,
+  nextStep,
+  handleClose,
 }) => {
   const { firstName, lastName, gender, maritalStatus, birthdate } = formData;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Container maxWidth="xs">
-      <Typography variant="h4" component="h2">
-        Personal Info
-      </Typography>
+      <Container
+        maxWidth="xs"
+        sx={{
+          border: "1px solid #1976d2",
+          marginTop: "20px",
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="h2"
+          sx={{ marginTop: "20px", marginBottom: "15px", textAlign: "center" }}
+        >
+          Personal Info
+        </Typography>
         <TextField
           label="First Name"
           name="firstName"
@@ -96,7 +105,7 @@ export const PersonalInfo = ({
         </TextField>
 
         <Stack spacing={4}>
-          <DesktopDatePicker
+          <DatePicker
             label="Birthday"
             value={birthdate}
             onChange={(date) => onChange("birthdate", date)}
@@ -113,13 +122,17 @@ export const PersonalInfo = ({
           />
         </Stack>
 
-        <Stack direction="row" justifyContent="space-between">
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          marginBottom="30px"
+        >
           <Button
             startIcon={<NavigateNext />}
             variant="contained"
             color="primary"
             sx={{ marginTop: "1rem", width: "45%" }}
-            onClick={() => nextStep(0)}
+            onClick={nextStep}
           >
             Next
           </Button>
@@ -128,7 +141,7 @@ export const PersonalInfo = ({
             variant="contained"
             color="error"
             sx={{ marginTop: "1rem", width: "45%" }}
-            onClick={(e) => {setOpen(false); setStep(0)}}
+            onClick={handleClose}
           >
             Close
           </Button>

@@ -1,17 +1,27 @@
 import { Add } from "@mui/icons-material";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
 import { MultiStepForm } from "./MultiStepForm";
 import Users from "./Users";
 
-const Content = ({ setStep, props }) => {
-  const [open, setOpen] = useState(false);
-
+const Content = ({
+  props,
+  nextStep,
+  prevStep,
+  handleClose,
+  handleOpen,
+  handleSubmit,
+}) => {
   return (
     <Box flex={5} p={2}>
-      {open ? (
-        <form>
-          <MultiStepForm props={props} setStep={setStep} setOpen={setOpen} />
+      {props.open ? (
+        <form onSubmit={handleSubmit}>
+          <MultiStepForm
+            props={props}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleClose={handleClose}
+            handleSubmit={handleSubmit}
+          />
         </form>
       ) : (
         <Box>
@@ -22,16 +32,12 @@ const Content = ({ setStep, props }) => {
             marginBottom="30px"
           >
             <Typography variant="h4">Users</Typography>
-            <Button
-              variant="outlined"
-              startIcon={<Add />}
-              onClick={(e) => setOpen(true)}
-            >
+            <Button variant="outlined" startIcon={<Add />} onClick={handleOpen}>
               Add New
             </Button>
           </Stack>
           <Stack>
-            <Users />
+            <Users users={props.users} />
           </Stack>
         </Box>
       )}

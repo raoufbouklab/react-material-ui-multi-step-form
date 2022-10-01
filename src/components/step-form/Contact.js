@@ -9,13 +9,19 @@ export const Contact = ({
   prevStep,
   nextStep,
   handleChange,
-  setStep,
-  setOpen,
+  handleClose
 }) => {
   const { email, phone, password, message } = formData;
   return (
-    <Container maxWidth="xs">
-      <Typography variant="h4" component="h2">
+    <Container
+      maxWidth="xs"
+      sx={{ border: "1px solid #1976d2", marginTop: "20px" }}
+    >
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{ marginTop: "20px", marginBottom: "15px", textAlign: "center" }}
+      >
         Contanct
       </Typography>
       <TextField
@@ -69,13 +75,13 @@ export const Contact = ({
         fullWidth
       />
 
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" marginBottom="30px">
         <Button
           startIcon={<NavigateBefore />}
           variant="contained"
           color="secondary"
           sx={{ marginTop: "1rem", width: "30%" }}
-          onClick={() => prevStep(2)}
+          onClick={prevStep}
         >
           Back
         </Button>
@@ -84,7 +90,7 @@ export const Contact = ({
           variant="contained"
           color="primary"
           sx={{ marginTop: "1rem", width: "30%" }}
-          onClick={() => nextStep(2)}
+          onClick={nextStep}
         >
           Next
         </Button>
@@ -93,10 +99,7 @@ export const Contact = ({
           variant="contained"
           color="error"
           sx={{ marginTop: "1rem", width: "30%" }}
-          onClick={(e) => {
-            setOpen(false);
-            setStep(0);
-          }}
+          onClick={handleClose}
         >
           Close
         </Button>

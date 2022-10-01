@@ -1,20 +1,9 @@
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Close, NavigateBefore, Send } from "@mui/icons-material";
-import {
-  Typography,
-  Stack,
-  Box,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Switch,
-} from "@mui/material";
+import { Typography, Stack, List, ListItem, ListItemText } from "@mui/material";
 
-export const Review = ({ formData, prevStep, setStep, setOpen }) => {
+export const Review = ({ formData, prevStep, handleSubmit, handleClose }) => {
   const {
     firstName,
     lastName,
@@ -180,7 +169,7 @@ export const Review = ({ formData, prevStep, setStep, setOpen }) => {
           variant="contained"
           color="secondary"
           sx={{ marginTop: "1rem", width: "30%" }}
-          onClick={() => prevStep(3)}
+          onClick={prevStep}
         >
           Back
         </Button>
@@ -198,10 +187,7 @@ export const Review = ({ formData, prevStep, setStep, setOpen }) => {
           variant="contained"
           color="error"
           sx={{ marginTop: "1rem", width: "30%" }}
-          onClick={(e) => {
-            setOpen(false);
-            setStep(0);
-          }}
+          onClick={handleClose}
         >
           Close
         </Button>
