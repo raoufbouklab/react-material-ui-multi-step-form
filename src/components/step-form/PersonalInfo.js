@@ -43,6 +43,7 @@ export const PersonalInfo = ({
           label="First Name"
           name="firstName"
           placeholder="Enter first name"
+          required
           value={firstName}
           onChange={handleChange}
           margin="normal"
@@ -54,6 +55,7 @@ export const PersonalInfo = ({
           label="Last Name"
           name="lastName"
           placeholder="Enter last name"
+          required
           value={lastName}
           onChange={handleChange}
           margin="normal"

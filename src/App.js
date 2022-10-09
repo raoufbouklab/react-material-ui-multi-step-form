@@ -30,13 +30,13 @@ function App() {
 
   //Fetch Users from server
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchUsers = async () => {
       await fetch("http://localhost:3004/users")
         .then((response) => response.json())
         .then((data) => setUsers(data))
         .catch((error) => console.log(error));
     };
-    fetchTasks();
+    fetchUsers();
   }, []);
 
   const handleSubmit = (e) => {

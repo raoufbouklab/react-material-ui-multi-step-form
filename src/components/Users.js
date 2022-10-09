@@ -18,10 +18,10 @@ const Users = ({ users }) => {
       renderCell: () => {
         return (
           <Stack direction="row" justifyContent="space-between">
-            <Button variant="outlined" color="success" sx={{ width: "45%" }}>
+            <Button variant="contained" color="success" sx={{ width: "45%" }}>
               Edit
             </Button>
-            <Button variant="outlined" color="error" sx={{ width: "45%" }}>
+            <Button variant="contained" color="error" sx={{ width: "45%" }}>
               Delete
             </Button>
           </Stack>
@@ -33,6 +33,7 @@ const Users = ({ users }) => {
     <div style={{ height: 400, width: "100%", margin: 0 }}>
       <DataGrid
         rows={users}
+        disableSelectionOnClick
         columns={columns.concat(actionColumn)}
         pageSize={5}
         rowsPerPageOptions={[5]}
